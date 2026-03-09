@@ -3,10 +3,6 @@ import pyodbc
 import os
 import survey_system.src.nlp_engine as nlp_engine
 from datetime import datetime
-
-
-import os
-import pyodbc
 from dotenv import load_dotenv
 
 load_dotenv()

@@ -1,13 +1,17 @@
 import streamlit as st
 import os
 import pyodbc
-import survey_system.anket_aktarım.anket_aktarım_scripti as anket_aktarım_scripti
-import survey_system.src.rapor_olusturucu as rapor_olusturucu
 import pandas as pd
 import plotly.express as px
-import survey_system.src.grafik_olusturma as grafik_olusturma
+import grafik_olusturma
+import nlp_engine
+import rapor_olusturucu
+
+
 
 from dotenv import load_dotenv
+
+from survey_system.src import anket_aktarim_scripti
 
 load_dotenv()
 
@@ -322,7 +326,7 @@ with tab2:
 
             if metinler:
                 with st.spinner("Analiz ediliyor..."):
-                    sid, title = anket_aktarım_scripti.ham_veri_kaydet(metinler, st.session_state['current_user_id'])
+                    sid, title = anket_aktarim_scripti.ham_veri_kaydet(metinler, st.session_state['current_user_id'])
                     st.session_state['last_id'] = sid
                     st.success("Analiz tamamlandı!")
                     st.rerun()
