@@ -1,0 +1,16 @@
+.env
+# Python sistem dosyaları
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Veritabanı ve Geçici Dosyalar
+temp_charts/
+*.pdf
+*.log
+
+# IDE Ayarları
+.vscode/
+.idea/
