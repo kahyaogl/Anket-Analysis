@@ -3,16 +3,16 @@ import os
 import pyodbc
 import pandas as pd
 import plotly.express as px
-import grafik_olusturma
-import nlp_engine
-import rapor_olusturucu
+
 
 
 
 from dotenv import load_dotenv
 
 from survey_system.src import anket_aktarim_scripti
-
+from survey_system.src import rapor_olusturucu
+from survey_system.src import nlp_engine
+from survey_system.src import grafik_olusturma
 load_dotenv()
 
 def get_db_connection():
@@ -21,7 +21,7 @@ def get_db_connection():
     database = os.getenv("DB_NAME")
     
     conn_str = (
-        f"Driver={{SQL Server}};"
+        f"Driver={{ODBC Driver 17 for SQL Server}};"
         f"Server={server};"
         f"Database={database};"
         "Trusted_Connection=yes;"

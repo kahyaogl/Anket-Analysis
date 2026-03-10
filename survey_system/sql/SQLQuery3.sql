@@ -5,9 +5,11 @@
 --her soru için,
 --her cevabın
 --kaç kez seçildiğini göstermek
+SELECT * FROM users
 SELECT * FROM surveys;
 SELECT * FROM questions;
 SELECT * FROM answers;
+
 -- Kim?
 --Hangi ankete?
 --Hangi soruya?

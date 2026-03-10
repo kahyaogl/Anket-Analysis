@@ -18,7 +18,7 @@ CREATE TABLE users (
     users_name VARCHAR(100),--kullanıcı adı
     users_mail VARCHAR(100) NOT NULL UNIQUE,--e-posta adresi benzersiz olmalı
     users_password VARCHAR(255) NOT NULL,--şifrelenmiş olarak saklanmalı
-    users_role VARCHAR(50) NOT NULL DEFAULT 'user',--kullanıcı rolü (admin/user)
+    users_role VARCHAR(50) NOT NULL DEFAULT 'users',--kullanıcı rolü (admin/user)
     users_created_at DATETIME2 DEFAULT SYSDATETIME(),--otomatik arih ekleme
 
     CONSTRAINT PK_users PRIMARY KEY (users_id)--anahtar

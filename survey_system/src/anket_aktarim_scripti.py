@@ -13,7 +13,7 @@ def get_db_connection():
     database = os.getenv("DB_NAME")
     
     conn_str = (
-        f"Driver={{SQL Server}};"
+        f"Driver={{ODBC Driver 17 for SQL Server}};"
         f"Server={server};"
         f"Database={database};"
         "Trusted_Connection=yes;"
