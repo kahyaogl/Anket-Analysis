@@ -4,11 +4,7 @@ import pandas as pd
 from fpdf import FPDF
 import datetime
 from dotenv import load_dotenv
-
-# Kendi yazdığın grafik modülü
 import grafik_olusturma 
-
-# .env dosyasındaki değişkenleri (DB_SERVER, DB_NAME vb.) yükle
 load_dotenv()
 
 def get_db_connection():
@@ -57,19 +53,12 @@ def create_pro_report(survey_id):
         print(f"Veritabanı hatası: {e}")
         return None
 
-    # 3. PDF Başlatma ve Font Ayarları
-    pdf = FPDF()
-    pdf.set_auto_page_break(auto=True, margin=15)
+    pdf = FPDF()            
     
-    if os.path.exists(font_path):
-        pdf.add_font("ArialTR", "", font_path, unicode=True)
-        pdf.set_font("ArialTR", "", 12)
-    else:
-        pdf.set_font("Arial", "", 12)
-        print("Uyarı: Arial.ttf bulunamadı, varsayılan font kullanılıyor.")
-
-    if os.path.exists(font_bold_path):
-        pdf.add_font("ArialTR", "B", font_bold_path, unicode=True)
+    pdf.add_font('ArialTR', '', r'C:\Windows\Fonts\arial.ttf', uni=True)    # normal
+    pdf.add_font('ArialTR', 'B', r'C:\Windows\Fonts\arialbd.ttf', uni=True) # bold
+    pdf.set_font("ArialTR", "B", 22)  # Başlıklar için
+    pdf.set_font("ArialTR", "", 12)   # Normal metinler için
 
     # --- KAPAK SAYFASI ---
     pdf.add_page()

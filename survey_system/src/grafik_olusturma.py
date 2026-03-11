@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-import pandas as pd
+
 
 def save_combined_chart(q_text, q_data, filename):
     """

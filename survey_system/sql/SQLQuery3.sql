@@ -5,10 +5,7 @@
 --her soru için,
 --her cevabın
 --kaç kez seçildiğini göstermek
-SELECT * FROM users
-SELECT * FROM surveys;
-SELECT * FROM questions;
-SELECT * FROM answers;
+
 
 -- Kim?
 --Hangi ankete?
@@ -26,34 +23,10 @@ JOIN users u      ON r.users_id = u.users_id--  yanıt veren kullanıcı ile use
 JOIN surveys s    ON r.surveys_id = s.surveys_id--  yanıt verilen anket ile surveys tablosunu birleştir
 JOIN answers a    ON r.answers_id = a.answers_id--  verilen cevaba göre answers tablosunu birleştir
 JOIN questions q  ON a.questions_id = q.questions_id;--  cevaba göre questions tablosunu birleştir
-USE SurveyDB;
+
 GO
 
-SELECT
-    s.surveys_title,
-    q.questions_text,
-    a.answers_text,
-    x.answer_count
-FROM (
-    SELECT
-        r.surveys_id,
-        q.questions_id,
-        a.answers_id,
-        COUNT(*) AS answer_count
-    FROM responses r
-    JOIN answers a   ON r.answers_id = a.answers_id
-    JOIN questions q ON a.questions_id = q.questions_id
-    GROUP BY
-        r.surveys_id,
-        q.questions_id,
-        a.answers_id
-) x
-JOIN surveys s   ON x.surveys_id = s.surveys_id
-JOIN questions q ON x.questions_id = q.questions_id
-JOIN answers a   ON x.answers_id = a.answers_id
-ORDER BY
-    s.surveys_id,
-    q.questions_id;
+
 --anket,soru,cevap ve cevap sayısını getiren sorgu, sonuçları anket id'sine göre sıralar
 
 SELECT

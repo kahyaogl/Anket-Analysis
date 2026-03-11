@@ -1,4 +1,4 @@
-﻿-- fulltext temizlendi
+﻿																																																																														-- fulltext temizlendi
 DROP TABLE IF EXISTS responses;
 DROP TABLE IF EXISTS answers;
 DROP TABLE IF EXISTS questions;

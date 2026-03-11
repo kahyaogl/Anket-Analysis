@@ -3,16 +3,11 @@ import os
 import pyodbc
 import pandas as pd
 import plotly.express as px
-
-
-
-
 from dotenv import load_dotenv
-
 from survey_system.src import anket_aktarim_scripti
 from survey_system.src import rapor_olusturucu
 from survey_system.src import nlp_engine
-from survey_system.src import grafik_olusturma
+
 load_dotenv()
 
 def get_db_connection():
@@ -38,11 +33,7 @@ st.markdown("""
 
 <style>
 
-
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
-
-
 
 html, body, [class*="css"]  {
 
@@ -50,15 +41,11 @@ html, body, [class*="css"]  {
 
 }
 
-
-
 .stApp {
 
     background: linear-gradient(135deg, #f5f7fa, #eef2f7);
 
 }
-
-
 
 /* HERO */
 
@@ -80,8 +67,6 @@ html, body, [class*="css"]  {
 
 }
 
-
-
 /* CARDS */
 
 .data-card {
@@ -102,15 +87,11 @@ html, body, [class*="css"]  {
 
 }
 
-
-
 .data-card:hover {
 
     transform: translateY(-8px);
 
 }
-
-
 
 /* METRIC BOX */
 
@@ -127,8 +108,6 @@ html, body, [class*="css"]  {
     text-align: center;
 
 }
-
-
 
 /* BUTTON STYLE */
 
@@ -150,15 +129,11 @@ div.stButton > button {
 
 }
 
-
-
 div.stButton > button:hover {
     transform: scale(1.05);
     box-shadow: 0 8px 20px rgba(242,122,26,0.4);
 
 }
-
-
 
 /* TAB STYLE */
 
@@ -169,15 +144,9 @@ button[data-baseweb="tab"] {
 
 }
 
-
-
 </style>
 
 """, unsafe_allow_html=True)
-
-
-
-
 
 # Hero bölümünü bu şekilde güncellersen HTML etiketleri düzgün çalışacaktır
 st.markdown(f"""
@@ -191,8 +160,6 @@ st.markdown(f"""
     </div>
 </div>
 """, unsafe_allow_html=True) # <-- Bu parametre hayati önem taşıyor!
-
-
 
 tab1, tab2 = st.tabs(["🏠 ANA SAYFA", "📥 ANKET YÜKLE"])
 
@@ -269,7 +236,7 @@ with tab1:
 
             if not user_surveys.empty:
                 # Daha şık bir görünüm için tarih formatını düzenleyelim
-                user_surveys['created_at'] = pd.to_datetime(user_surveys['created_at']).dt.strftime('%d.%m.%Y %H:%M')
+                user_surveys['surveys_created_at'] = pd.to_datetime(user_surveys['surveys_created_at']).dt.strftime('%d.%m.%Y %H:%M')
                 
                 # Tabloyu gösteriyoruz
                 st.dataframe(
@@ -277,7 +244,7 @@ with tab1:
                     column_config={
                         "surveys_id": "ID",
                         "surveys_title": "Anket Başlığı",
-                        "created_at": "Oluşturulma Tarihi"
+                        "surveys_created_at": "Oluşturulma Tarihi"
                     },
                     hide_index=True,
                     use_container_width=True

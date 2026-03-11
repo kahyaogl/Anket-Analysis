@@ -33,13 +33,9 @@ sentiment_model = pipeline(
     device=device
 )
 
-
-
 embedding_model = SentenceTransformer(
     "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 )
-
-
 
 turkish_stopwords = [
     "ve", "bir", "bu", "çok", "da", "de", "için", "ile",
@@ -50,8 +46,6 @@ turkish_stopwords = [
 vectorizer_model = CountVectorizer(
     stop_words=turkish_stopwords
 )
-
-
 
 def create_topic_model(data_size):
     # 1. Kümeleme modelini tanımla
@@ -72,12 +66,7 @@ def create_topic_model(data_size):
     
     return topic_model
 
-
-
-
 genai.configure(api_key=api_key)
-
-
 
 def get_gemini_model():
     try:
@@ -90,8 +79,6 @@ def get_gemini_model():
 
 
 gemini_model = get_gemini_model()
-
-
 
 def analiz_et(metin):
     try:
@@ -109,7 +96,6 @@ def analiz_et(metin):
     except Exception as e:
         print("BERT hatası:", e)
         return 0, "Nötr", "neutral"
-
 
 
 def konu_basligi_olustur(anahtar_kelimeler):
@@ -135,7 +121,6 @@ def konu_basligi_olustur(anahtar_kelimeler):
     except Exception as e:
         print("Gemini hata:", e)
         return "Müşteri Geri Bildirimi"
-
 
 
 def toplu_analiz_yap(metin_listesi):

@@ -171,7 +171,7 @@ def ham_veri_kaydet(metin_listesi, user_id, survey_title=f"Ham Veri Analizi - {d
             # BERT analizi
             skor, etiket, _ = nlp_engine.analiz_et(text)
 
-            # DİKKAT: topics_id'yi burada 0 olarak gönderiyoruz
+           
             cursor.execute("""
                 INSERT INTO responses 
                 (users_id, surveys_id, answers_id, topics_id, sentiment_score, sentiment_label, category_label)
@@ -182,7 +182,7 @@ def ham_veri_kaydet(metin_listesi, user_id, survey_title=f"Ham Veri Analizi - {d
             res_id = cursor.fetchone()[0]
             all_responses.append({"id": res_id, "text": text})
 
-        # Döngü bitti, buraya kadar olanları kaydet (Duygu analizleri garantiye alınsın)
+       
         conn.commit()
 
         # Toplu konu analizi (Gemini)
